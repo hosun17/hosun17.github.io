@@ -1,9 +1,7 @@
+
+#Business Analytics : Adaboost, GBM
 ---
-layout: default
-permalink: index.html
-title: Personal Homepage of foo boo
-description: "Adaboost, GBM"
----
+이 post는 고려대학교 산업경영공학과 DSBA연구실 강필성 교수님의 Business-Analytics강의를 바탕으로 작성되었습니다
 
 # 1. adaboost
 ### main idea
@@ -115,7 +113,8 @@ GBM의 pseudocode는 Adaboost에 비해 간단하며 아래와 같다.
 
 Regression과 Classification에서 사용되는 Loss function은 아래와 같다.
 
-
+![](http://hosun17.github.io/images/20.PNG)
+![](http://hosun17.github.io/images/21.PNG)
 
 Dataset에 노이즈가 있는 상태에서 잔차를 다음 단계의 Y값으로 넣는다는 것은 노이즈를 모두 학습하겠다는 것인데 실질적으로 오리지널 GBM으로 학습시키게되면 노이즈에 굉장히 민감하면서 과적합이 되는 모형이 되는 문제는 어떻게 해결할까?
 
