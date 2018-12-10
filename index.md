@@ -7,13 +7,13 @@ description: "Adaboost, GBM"
 
 # 1. adaboost
 ## main idea
-### random 예측보다 약간 나은 성능을 보이는 weak model은 임의의 정확한 strong model로 향상 될 수 있다.
+## random 예측보다 약간 나은 성능을 보이는 weak model은 임의의 정확한 strong model로 향상 될 수 있다.
 
 첫 번째 모델이 먼저 문제를 풀고 앞서 해결하지 못한 어려운 케이스에 대해 다음 단계에서 집중적으로 풀어나가는 방식이다.
 
 예를 들면 문제집 한권을 첫 번째 사람에게 풀게하고, 앞선 사람의 정답율이 낮은 문제를 다음 사람에게 제공하여 문제를 풀게한다. 그 다음 사람은 앞선 사람들이 약했던 부분에 대해 최대한 집중적으로 풀도록 시킨다. 이러한 과정을 반복하여 결합하게 되면 결과가 좋아진다는 것이다. 이와 같이 앞선 모델의 영역 별 정답률이 그 다음 사람의 공부해야 할 데이터의 비중에 영향을 미치게 되는 시퀀셜 프로세스이다.
 
-Base learner(기저 모델)로는 선형에 가까운 linear regression,logistic regression,stump tree(split을 한번만 하는)등과 같은 계산 복잡도가 낮은 weak model을 사용한다.
+기저 모델(Base learner)로는 선형에 가까운 linear regression,logistic regression,stump tree(split을 한번만 하는)등과 같은 계산 복잡도가 낮은 weak model을 사용한다.
 
 ![](http://hosun17.github.io/images/1.bmp)
 
@@ -35,7 +35,7 @@ stump tree를 사용한다고 가정하면
 ![](http://hosun17.github.io/images/11.PNG)
 
 
-## Pseudocode of AdaBoost
+## Pseudocode of AdaBoost 설명
 
 ![](http://hosun17.github.io/images/2.bmp)
 
@@ -65,10 +65,15 @@ i번째 instance가 t+1 시점에서 학습용 데이터에 선택될 확률은 
 
 정확도가 높은 모형에서 오분류된 데이터 포인트가 더 중요하게 판단되고 αt에 따라 다음 단계의 Dataset에 선택될 확률은 정확도가 낮은 모델에 비해 상대적으로 더 커지게 된다.
 
+![](http://hosun17.github.io/images/3.bmp)
+![](http://hosun17.github.io/images/3.bmp)
+
 #### 5. 계산된 αt들을 통해서 영역들을 결합한다.
 
 # 2. GBM (Gradient boosting machine)
-#### main idea
+### main idea
+
+### ㄴㅁㄹㅇㅁㄴㅇㄻㄴㅇㄻㄴㅇㄹㄻㄴㅇㅇㄻㄴㅇㄹ
 현재의 모델이 residual 만큼 잘못 맞주고 있으니, 두번째 예측 모델을 만들어서 잔차 만큼만 예측하도록 학습 시키자. 1번과 2번 모형을 결과물을 합치면 정확하게 정답을 맞출 수 있을 것이다. GBM은 x들 혹은 Instance를 건드는 것이 아니라. 그대로 두고 지속적으로 y 값을 건들어요 객체들이 추정해야 하는 정답들을 바꾸는 것이다. 
 
 ![](http://hosun17.github.io/images/foo.png)
