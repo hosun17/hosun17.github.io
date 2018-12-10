@@ -15,45 +15,33 @@ description: "Adaboost, GBM"
 
 boosting은 선형에 가까운 모델 linear regression,logistic regression,stump tree(split을 딱한번만 하는)와 같은 계산 복잡도가 낮은 weak model을 base learner로 사용한다.
 
-
 ![](http://hosun17.github.io/images/1.bmp)
-
 
 스텀프 트리를 사용한다고 하면
 부스팅 마다 개별 데이터 포인트가 선택될 확률이 항상 1/N로 uniform 하지만 다음단계에서 각 데이터 포인트가 선택될 확률을 다르게 조정하게된다.
 현재 모델에 의해서 정분류된 데이터는 다음단계에서 선택될 확률이 감소, 오분류된 데이터 포인트는 다음단계에서 선택될 확률이 증가한다. 
 
-![](http://hosun17.github.io/images/foo.png)
+
 
 이러한 가중치를 통해서 샘플링된 데이터를 가지고 두번째 스텀프 트리를 만들고, 모델에 의한 결과(정분류 또는 오분류에)따라 가중치가 재조정 된다. 
 
-![](http://hosun17.github.io/images/foo.png)
-![](http://hosun17.github.io/images/foo.png)
 
 위와 같이 충분히 반복하면 계산된 알파들을 통해서 영역들을 적당히 결합하게 되면
 단일 모형은 단순한 스텀프 트리일지라도, 최종적인 분류 경계면은 굉장히 복잡한 모형을 만들 수 있다.
 
-![](http://hosun17.github.io/images/foo.png)
 
 ![](http://hosun17.github.io/images/2.bmp)
 
+##### 1. 앙상블 사이즈 T를 몇 개로 할 것인가는 하이퍼 파라메터로 사용자가 결정.
+##### 2. X는 input variable , y는 binary classification의 target으로 +1,-1로 표현.
+##### 3. S에 대해 Uniform Distribution D1(i)을 Define 한다.
+D1(i)는 i번째 instance가 1번 Dataset에서 선택 될 확률.(Instance가 10개라면 모두 0.1로 초기화)
+##### 4. Sequential process
+t=1 에서 T까지 distribution Dt에 대해서 모델 ht를 학습시킨다. 학습된 모델의 ϵt(오분류율 : 모형의 예측값 ht(x)과 실제 레이블인 y이 다른 비율)를 계산하여 0.5보다 크면 제외한다. 이는 binary classifier에서 performance가 0.5보다는 커야하는 것을 의미한다.
 
-![](http://hosun17.github.io/images/2.bmp)
+αt(모델들을 결합할 때 사용할 개별 모형의 가중치)는 아래와 같이 구할 수 있으며,  
+![](http://hosun17.github.io/images/3.png)
 
-바이너리 클래시피케이션을 기준으로 한 수도 코드
--. 앙상블 사이즈를 몇 개로 할 것인가는 하이퍼 파라메터로 사용자가 결정한다
--. X는 input variable , y는 바이너리 클래시피케이션의 target으로 +1,-1로 표현한다.
--. Uniform Distribution을 Define한다. 
-D1(i)는 i번째 instance가 1번 데이터 셋에서 선택될 확률이다. 
-(Instance가 10개라면 모두 0.1로 초기화를 하는 것이다.)
--. Sequential process 
-T=1 -> T까지 갈 때 어떻게 할 것이냐.
-distribution Dt에 대해서 모델 ht를 학습시켜라.
-모델이 찾아지면 첫번째 ϵ_t (오분류율 misclassification rate)를 계산하면 모형의 예측값h_t (x)과 실제 레이블인 y가 다른 것을 계산하는 것이다.
-ϵ_t(오분류율)가 0.5크면 제외,(binary classifier에서는 performance가 0.5보다는 커야하는 것을 의미).
-
--. 알파는 개별적인 모델들을 결합할 때 사용할 가중치는 아래와 같이 구할 수 있으며, (개별모형에 대한 가중치) 
-α_t=1/2  ln⁡〖((1-ε_t)/ε_t 〗),0≤ε_t<0.5
 ε_t→0.5,α_t→0 이고, 〖 ε〗_t→0,α_t→∞ 이다.  
 모델이 랜덤에 가까우면 최종 결과물을 만들어낼 때 신뢰도는 0에 가깝고, 모델이 정확하면 정확할 수록 최종 예측할 때 그 모델에 부여하는 가중치를 크게 한다는 의미이다. 
 -. i번째 instance가 T+1 시점에서 학습용 데이터에 선택될 확률은 t 시점의 확률에 비례하며, 아래와 같이 구할 수 있다.
