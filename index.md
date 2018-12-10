@@ -48,22 +48,10 @@ i번째 instance가 t+1 시점에서 학습용 데이터에 선택될 확률은 
 
 ![](http://hosun17.github.io/images/2.PNG)
 
-정분류일 경우ㅁㅁㅁ
+정분류일 경우 ![](http://hosun17.github.io/images/6.PNG)가 되어 선택될 확률이 작아지며
 
-ㅇ
-ㅇ
-ㅇㅁㄴㅇㄻㄴㅇㄻㄴㅇㄹㅇㄴㅁㅇㄴㄻㄴㄹㅇ
-ㅇ
-ㅇ
+오분류일 경우 ![](http://hosun17.github.io/images/7.PNG)가 되어 선택될 확률이 커진다.
 
-![](http://hosun17.github.io/images/4.PNG)
-
-오분류일 경우
-
-![](http://hosun17.github.io/images/5.PNG)
-
-〖정분류일 경우 y〗_i=h_t (x_i ),   exp⁡(〖-α〗_t )<1가 되어 선택될 확률이 작아지며, 
-〖오분류일 경우 y〗_i 〖≠h〗_t (x_i ), exp⁡(α_t )>1가 되어 선택될 확률이 커진다.
 (y_i를 -1,+1로 표현하는 이유)
 정확도가 높은 모형에서 오분류된 데이터 포인트 중요하게 판단하고 알파 티에 따라 기하 급수적으로 증가한다. 다음 단계에서 선택되는 확률이 상대적으로 더 커진다.
 Zt는 모든 데이터 포인트들이 선택될 확률을 합하면 1이 되도록 해주는 normalize factor이다. 
