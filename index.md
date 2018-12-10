@@ -7,7 +7,7 @@ description: "Adaboost, GBM"
 
 # 1. adaboost
 ## main idea
-### 무작위 추측보다 약간 나은 성능을 보이는 약한 모델은 임의의 정확성을 가진 강력한 모델로 향상 될 수 있다는 것이다.
+### random 추측 보다 약간 나은 성능을 보이는 weak model은 임의의 정확한 strong model로 향상 될 수 있다.
 
 첫 번째 모델이 먼저 문제를 풀고 앞서 해결하지 못한 어려운 케이스에 대해 다음 단계에서 집중적으로 풀어나가는 방식이다.
 
@@ -26,12 +26,17 @@ boosting 마다 개별 데이터 포인트가 선택될 확률이 항상 1/N로 
 이러한 가중치를 통해서 샘플링된 데이터를 가지고 두번째 스텀프 트리를 만들고, 모델에 의한 결과(정분류 또는 오분류에)따라 가중치가 재조정 된다. 
 
 ![](http://hosun17.github.io/images/9.PNG)
+
 ![](http://hosun17.github.io/images/10.PNG)
 
 위와 같이 충분히 반복하면 계산된 알파들을 통해서 영역들을 적당히 결합하게 되면
 단일 모형은 단순한 스텀프 트리일지라도, 최종적인 분류 경계면은 굉장히 복잡한 모형을 만들 수 있다.
 
 ![](http://hosun17.github.io/images/11.PNG)
+
+
+
+## Pseudocode of AdaBoost
 
 ![](http://hosun17.github.io/images/2.bmp)
 
