@@ -34,8 +34,7 @@ stump tree를 사용한다고 가정하면
 
 ![](http://hosun17.github.io/images/11.PNG)
 
-
-### Pseudocode of AdaBoost 설명
+### Pseudocode of AdaBoost
 
 ![](http://hosun17.github.io/images/2.bmp)
 
@@ -85,24 +84,31 @@ i번째 instance가 t+1 시점에서 학습용 데이터에 선택될 확률은 
 
 GBM에서는 Instance는 그대로 두고 지속적으로 앞선 모델의 잔차를 y 값 즉, 객체들이 추정해야 하는 정답들을 바꾸어 다음 모델을 학습시킨다. 잔차에 대해 한번 만에 완벽하게 맞추지는 못하므로 앞선 모델이 맞추지 못한 만큼을 계속적으로 다음 모델이 학습시키도록 설계한다.
 
-어떻게 이러한 아이디어가 Gradient와 관련이 있을까?
+이러한 아이디어가 어떻게 Gradient와 관련이 있을까?
 
 ![](http://hosun17.github.io/images/15.PNG)
 ![](http://hosun17.github.io/images/16.PNG)
 
-Squared loss function을 f(x)에 대해 미분하게 되면 Gradient는 아래와 같이 계산되고, Gradient Descent Algorithm과 마찬가지로 잔차(실제 값에서 함수의 추정 값을 뺀)는 loss function의 negative gradient로 표현되며, loss function의 최소값을 찾기 위해서는 Gradient의 반대 방향으로 이동하여야 한다.
+Squared loss function을 f(x)에 대해 미분하게 되면 Gradient는 아래와 같이 계산되고, Gradient Descent Algorithm과 마찬가지로 잔차(실제 값에서 함수의 추정 값을 뺀)는 loss function의 negative gradient로 표현되며, loss function의 최소값을 찾기 위해서는 Gradient의 반대 방향으로 이동하여야 하기 때문이다.
+
+### 회귀 모형의 예
+
+![](http://hosun17.github.io/images/17.PNG)
+
+Tree1 : Regression을 tree로 한다는 것은 Split point를 기준으로 해당 영역의 y값의 평균을 추정하는 것이며, 위와 같이 계단형의 함수가 나온다.
+Tree2 : y값은 실제 값과 앞선 Tree에 의해서 추정된 값과의 차이에 의해서 결정되며, 그 값 들을 기준으로 Tree를 추정한다.
+이러한 프로세스을 지속적으로 반복하여 추정한다.
+
+### Pseudocode of Gradient
+
+![](http://hosun17.github.io/images/18.PNG)
+
+GBM의 pseudocode는 Adaboost에 비해 간단하며 아래와 같다.
+#### 1. 해당하는 Gradient를 구하고, 거기에 대해 loss function을 계산한다.
+#### 2. 그 다음 해당하는 실제값과 추정값의 차이인 잔차를 구하여 다음 단계의 y 값으로 치환한다.
+#### 3. 최종적인 결과물은 앞서 구했던 결과물들을 모두 더해준다.
 
 
-
-Tree1 : Regression을 tree로 한다는 것은 Split point를 기준으로 해당하는 영역의 y값의 평균을 추정하는 것이다. 계단형의 함수가 나온다. 
-Tree2 : y값은 실제 값과 앞선 Tree에 의해서 추정된 값과의 차이에 의해서 결정됨. 여전히 잔차가 남아있으므로 그 잔차들을 기준으로 Tree를 추정한다… 이것을 계속적으로 반복하여 추정한다. 언젠가는 맞추겠지…
-
-
-해당하는 그래디언트 구한다. 거기에 대해서 로스펑션을 구한다. 해당하는 실제값과 추정값의 차이인 잔차를 구한다.
-그 잔차를 다음 단계의 y 값으로 치환한다. 
-최종적인 결과물은 앞서 구했던 결과물 들을 싹 다 더해준다. 
-Y바는 정답인데 +-1로 정의된 정답이고 F : 현재 모형에서의 예측 값 
-정분류가 된다면 로스는 0에 가까워 지고, 오분류가 되면 + 이므로 로스가 커진다.
 
 데이터 셋에 노이즈가 있는 상태에서 잔차를 다음단계의 Y값으로 넣는다는 것은 노이즈를 외우겠다는 것인데 실질적으로 오리지널 GBM으로 학습시키면 노이즈에 굉장히 민감하면서 과적합이 되는 모형이 됨.
 
