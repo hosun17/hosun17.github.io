@@ -105,12 +105,17 @@ Tree2 : y값은 실제 값과 앞선 Tree에 의해서 추정된 값과의 차�
 
 ### Pseudocode of Gradient
 
+Friedman (2001), Natekin and Knoll (2013)
 ![](http://hosun17.github.io/images/18.PNG)
 
 GBM의 pseudocode는 Adaboost에 비해 간단하며 아래와 같다.
 #### 1. 해당하는 Gradient를 구하고, 거기에 대해 loss function을 계산한다.
 #### 2. 그 다음 해당하는 실제값과 추정값의 차이인 잔차를 구하여 다음 단계의 y 값으로 치환한다.
 #### 3. 최종적인 결과물은 앞서 구했던 결과물들을 모두 더해준다.
+
+Regression과 Classification에서 사용되는 Loss function은 아래와 같다.
+
+
 
 Dataset에 노이즈가 있는 상태에서 잔차를 다음 단계의 Y값으로 넣는다는 것은 노이즈를 모두 학습하겠다는 것인데 실질적으로 오리지널 GBM으로 학습시키게되면 노이즈에 굉장히 민감하면서 과적합이 되는 모형이 되는 문제는 어떻게 해결할까?
 
