@@ -58,9 +58,12 @@ i번째 instance가 t+1 시점에서 학습용 데이터에 선택될 확률은 
 
 ![](http://hosun17.github.io/images/2.PNG)
 
-정분류일 경우 ![](http://hosun17.github.io/images/6.PNG)가 되어 다음 단계에서 선택될 확률이 작아지며,
+정분류일 경우 다음 단계에서 선택될 확률이 작아지며,
+![](http://hosun17.github.io/images/12.PNG)
 
-오분류일 경우 ![](http://hosun17.github.io/images/7.PNG)가 되어 다음 단계에서 선택될 확률은 커진다.
+
+오분류일 경우 다음 단계에서 선택될 확률은 커진다.
+![](http://hosun17.github.io/images/13.PNG)
 
 정확도가 높은 모형에서 오분류된 데이터 포인트가 더 중요하게 판단되고 αt에 따라 다음 단계의 Dataset에 선택될 확률은 정확도가 낮은 모델에 비해 상대적으로 더 커지게 된다.
 
