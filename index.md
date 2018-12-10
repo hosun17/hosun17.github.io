@@ -22,7 +22,6 @@ boosting은 선형에 가까운 모델 linear regression,logistic regression,stu
 현재 모델에 의해서 정분류된 데이터는 다음단계에서 선택될 확률이 감소, 오분류된 데이터 포인트는 다음단계에서 선택될 확률이 증가한다. 
 
 
-
 이러한 가중치를 통해서 샘플링된 데이터를 가지고 두번째 스텀프 트리를 만들고, 모델에 의한 결과(정분류 또는 오분류에)따라 가중치가 재조정 된다. 
 
 
@@ -32,9 +31,9 @@ boosting은 선형에 가까운 모델 linear regression,logistic regression,stu
 
 ![](http://hosun17.github.io/images/2.bmp)
 
-##### 1. 앙상블 사이즈 T를 몇 개로 할 것인가는 하이퍼 파라메터로 사용자가 결정.
-##### 2. X는 input variable , y는 binary classification의 target으로 +1,-1로 표현.
-##### 3. S에 대해 Uniform Distribution D1(i)을 Define 한다.
+##### 1. ensemble size T를 몇 개로 할 것 인가는 Hyperparameter로 사용자가 결정한다.
+##### 2. X는 input variable , y는 binary classification의 target으로 +1,-1로 표현한다.
+##### 3. S에 대해 Uniform Distribution D1(i)을 Define한다.
 D1(i)는 i번째 instance가 1번 Dataset에서 선택 될 확률.(Instance가 10개라면 모두 0.1로 초기화)
 ##### 4. Sequential process
 t=1 에서 T까지 distribution Dt에 대해서 모델 ht를 학습시킨다. 학습된 모델의 ϵt(오분류율 : 모형의 예측값 ht(x)과 실제 레이블인 y이 다른 비율)를 계산하여 0.5보다 크면 제외한다. 이는 binary classifier에서 performance가 0.5보다는 커야하는 것을 의미한다.
@@ -49,7 +48,14 @@ i번째 instance가 t+1 시점에서 학습용 데이터에 선택될 확률은 
 
 ![](http://hosun17.github.io/images/2.PNG)
 
-D_(t+1) (i)=1/Z_t [D_t (i)·exp⁡(-α_t y_i h_t (x_i ))], α_t>0 
+정분류일 경우
+
+![](http://hosun17.github.io/images/4.PNG)
+
+오분류일 경우
+
+![](http://hosun17.github.io/images/5.PNG)
+
 〖정분류일 경우 y〗_i=h_t (x_i ),   exp⁡(〖-α〗_t )<1가 되어 선택될 확률이 작아지며, 
 〖오분류일 경우 y〗_i 〖≠h〗_t (x_i ), exp⁡(α_t )>1가 되어 선택될 확률이 커진다.
 (y_i를 -1,+1로 표현하는 이유)
