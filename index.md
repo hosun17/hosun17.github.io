@@ -135,15 +135,11 @@ neuralnet에서 일정 횟 수의 iteration이 반복되면 더 이상 학습시
 
 ### GBM(Gradient boosting machine)의 장점 
 
-GBM의 가장 큰 장점 중 하나는 변수의 상대적 중요도(통계적인 유의성은 아님)를 산출할 수 있다는 것이다.
-
+GBM의 가장 큰 장점 중 하나는 변수의 상대적 중요도를 산출할 수 있다는 것이다. (통계적인 유의성은 아님)
 
 예를 들어 
 
-
-![](http://hosun17.github.io/images/foo.png)
-
-Influence j(T)  
+![](http://hosun17.github.io/images/2.PNG)
 
 
 
