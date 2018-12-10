@@ -37,6 +37,9 @@ boosting은 선형에 가까운 모델 linear regression,logistic regression,stu
 
 ![](http://hosun17.github.io/images/2.bmp)
 
+
+![](http://hosun17.github.io/images/2.bmp)
+
 바이너리 클래시피케이션을 기준으로 한 수도 코드
 -. 앙상블 사이즈를 몇 개로 할 것인가는 하이퍼 파라메터로 사용자가 결정한다
 -. X는 input variable , y는 바이너리 클래시피케이션의 target으로 +1,-1로 표현한다.
