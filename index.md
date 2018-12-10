@@ -13,7 +13,7 @@ description: "Adaboost, GBM"
 
 예를 들면 문제집 한권을 첫 번째 사람에게 풀게하고, 앞선 사람의 정답율이 낮은 문제를 다음 사람에게 제공하여 문제를 풀게한다. 그 다음 사람은 앞선 사람들이 약했던 부분에 대해 최대한 집중적으로 풀도록 시킨다. 이러한 과정을 반복하여 결합하게 되면 결과가 좋아진다는 것이다. 앞선 모델의 영역 별 정답률이 그 다음 사람의 공부해야 할 데이터의 비중에 영향을 미치게 되는 시퀀셜 프로세스이다.
 
-boosting은 선형에 가까운 모델 linear regression,logistic regression,stump tree(split을 딱한번만 하는)와 같은 계산 복잡도가 낮은 weak model을 base learner로 사용한다.
+boosting은 선형에 가까운 linear regression,logistic regression,stump tree(split을 한번만 하는)등과 같은 계산 복잡도가 낮은 weak model을 base learner로 사용한다.
 
 ![](http://hosun17.github.io/images/1.bmp)
 
