@@ -89,6 +89,7 @@ GBM에서는 Instance는 그대로 두고 지속적으로 앞선 모델의 잔�
 이러한 아이디어가 어떻게 Gradient와 관련이 있을까?
 
 ![](http://hosun17.github.io/images/15.PNG)
+
 ![](http://hosun17.github.io/images/16.PNG)
 
 Squared loss function을 f(x)에 대해 미분하게 되면 Gradient는 아래와 같이 계산되고, Gradient Descent Algorithm과 마찬가지로 잔차(실제 값에서 함수의 추정 값을 뺀)는 loss function의 negative gradient로 표현되며, loss function의 최소값을 찾기 위해서는 Gradient의 반대 방향으로 이동하여야 하기 때문이다.
@@ -114,9 +115,11 @@ GBM의 pseudocode는 Adaboost에 비해 간단하며 아래와 같다.
 Regression과 Classification에서 사용되는 Loss function은 아래와 같다.
 
 ![](http://hosun17.github.io/images/20.PNG)
+
+
 ![](http://hosun17.github.io/images/21.PNG)
 
-Dataset에 노이즈가 있는 상태에서 잔차를 다음 단계의 Y값으로 넣는다는 것은 노이즈를 모두 학습하겠다는 것인데 실질적으로 오리지널 GBM으로 학습시키게되면 노이즈에 굉장히 민감하면서 과적합이 되는 모형이 되는 문제는 어떻게 해결할까?
+### Dataset에 노이즈가 있는 상태에서 잔차를 다음 단계의 Y값으로 넣는다는 것은 노이즈를 모두 학습하겠다는 것인데 노이즈에 굉장히 민감하면서 과적합이 되는 문제는 어떻게 해결해야 할까?
 
 아래 예에서 가우시안 노이즈를 준 데이터를 오리지널 GBM을 사용한 결과 practical하지 않은 모델이 학습되는 것을 보여준다.
 
