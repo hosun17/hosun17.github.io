@@ -48,7 +48,13 @@ i번째 instance가 t+1 시점에서 학습용 데이터에 선택될 확률은 
 
 ![](http://hosun17.github.io/images/2.PNG)
 
-정분류일 경우
+정분류일 경우ㅁㅁㅁ
+
+ㅇ
+ㅇ
+ㅇㅁㄴㅇㄻㄴㅇㄻㄴㅇㄹㅇㄴㅁㅇㄴㄻㄴㄹㅇ
+ㅇ
+ㅇ
 
 ![](http://hosun17.github.io/images/4.PNG)
 
