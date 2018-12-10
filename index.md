@@ -88,6 +88,7 @@ GBM에서는 Instance는 그대로 두고 지속적으로 앞선 모델의 잔�
 어떻게 이러한 아이디어가 Gradient와 관련이 있을까?
 
 ![](http://hosun17.github.io/images/15.PNG)
+![](http://hosun17.github.io/images/16.PNG)
 
 Squared loss function을 f(x)에 대해 미분하게 되면 Gradient는 아래와 같이 계산되고, Gradient Descent Algorithm과 마찬가지로 잔차(실제 값에서 함수의 추정 값을 뺀)는 loss function의 negative gradient로 표현되며, loss function의 최소값을 찾기 위해서는 Gradient의 반대 방향으로 이동하여야 한다.
 
