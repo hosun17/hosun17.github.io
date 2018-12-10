@@ -6,8 +6,8 @@ description: "Adaboost, GBM"
 ---
 
 # 1. adaboost
-### main idea
-#### 무작위 추측보다 약간 나은 성능을 보이는 약한 모델은 임의의 정확성을 가진 강력한 모델로 향상 될 수 있다는 것이다.
+## main idea
+### 무작위 추측보다 약간 나은 성능을 보이는 약한 모델은 임의의 정확성을 가진 강력한 모델로 향상 될 수 있다는 것이다.
 
 첫 번째 모델이 먼저 문제를 풀고 앞서 해결하지 못한 어려운 케이스에 대해 다음 단계에서 집중적으로 풀어나가는 방식이다.
 
@@ -31,11 +31,11 @@ boosting은 선형에 가까운 모델 linear regression,logistic regression,stu
 
 ![](http://hosun17.github.io/images/2.bmp)
 
-##### 1. ensemble size T를 몇 개로 할 것 인가는 Hyperparameter로 사용자가 결정한다.
-##### 2. X는 input variable , y는 binary classification의 target으로 +1,-1로 표현한다.
-##### 3. S에 대해 Uniform Distribution D1(i)을 Define한다.
+#### 1. ensemble size T를 몇 개로 할 것 인가는 Hyperparameter로 사용자가 결정한다.
+#### 2. X는 input variable , y는 binary classification의 target으로 +1,-1로 표현한다.
+#### 3. S에 대해 Uniform Distribution D1(i)을 Define한다.
 D1(i)는 i번째 instance가 1번 Dataset에서 선택 될 확률.(Instance가 10개라면 모두 0.1로 초기화)
-##### 4. Sequential process
+#### 4. Sequential process
 t=1 에서 T까지 distribution Dt에 대해서 모델 ht를 학습시킨다. 학습된 모델의 ϵt(오분류율 : 모형의 예측값 ht(x)과 실제 레이블인 y이 다른 비율)를 계산하여 0.5보다 크면 제외한다. 이는 binary classifier에서 performance가 0.5보다는 커야하는 것을 의미한다.
 
 αt(모델들을 결합할 때 사용 할 개별 모형의 가중치)는 아래와 같이 구할 수 있으며,
