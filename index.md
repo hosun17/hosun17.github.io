@@ -2,26 +2,20 @@
 layout: default
 permalink: index.html
 title: Personal Homepage of foo boo
-description: "Blogging on ...."
+description: "Adaboost, GBM"
 ---
-
-## Begging vs Boosting
-#### begging : 
-원래 잘 하는 학생들에게 서로 다른 유형의 문제를 일괄적으로 풀게 한 다음에 결합을 하는 것이고
-계산 복잡도가 높은 알고리즘(strong model)을 베이스 러너로 사용한다.
-
-#### boosting :
-첫 번째 모델이 먼저 문제를 풀고 앞서 해결하지 못한 어려운 케이스에 대해 집중적으로 풀어간다.
-
-예를 들어 문제집 한권을 1번째 학생에게 풀어보라고 한다. (통계학, 스포츠 전문가) 예술, 음악에는 약하니 다음사람에게 앞사람의 정답률이 낮은 문제를 제공, 3번째는 앞선 사람이 약했던 부분을 최대한 집중적으로 풀도록 시킨다. (
-즉, 
-계산 복잡도가 낮은(weak model)  모델은 선형에 가까움 모델 리니어, 로지스틱 리그레션, 스텀프 트리(split을 딱한번만 하는)
 
 # 1. adaboost
 ### main idea
-무작위 추측보다 약간 나은 성능을 보이는 약한 모델은 임의의 정확성을 가진 강력한 모델로 향상 될 수 있다는 것이다. 
-계산 복잡도가 낮은(weak model)  모델은 선형에 가까움 모델 리니어, 로지스틱 리그레션, 스텀프 트리(split을 딱한번만 하는)
-앞사람의 영역별 정답률이 그 다음 사람의 공부해야 할 데이터의 비중에 영향을 미친다. 즉, 시퀀셜 프로세스이다. )
+#####무작위 추측보다 약간 나은 성능을 보이는 약한 모델은 임의의 정확성을 가진 강력한 모델로 향상 될 수 있다는 것이다.
+
+첫 번째 모델이 먼저 문제를 풀고 앞서 해결하지 못한 어려운 케이스에 대해 다음 단계에서 집중적으로 풀어나가는 방식이다.
+
+예를 들면 문제집 한권을 첫 번째 사람에게 풀게하고, 앞선 사람의 정답율이 낮은 문제를 다음 사람에게 제공하여 문제를 풀게한다. 그 다음 사람은 앞선 사람들이 약했던 부분에 대해 최대한 집중적으로 풀도록 시킨다. 이러한 과정을 반복하여 결합하게 되면 결과가 좋아진다는 것이다. 앞선 모델의 영역 별 정답률이 그 다음 사람의 공부해야 할 데이터의 비중에 영향을 미치게 되는 시퀀셜 프로세스이다.
+
+boosting은 선형에 가까운 모델 linear regression,logistic regression,stump tree(split을 딱한번만 하는)와 같은 계산 복잡도가 낮은 weak model을 base learner로 사용한다.
+
+
 ![](http://hosun17.github.io/images/1.bmp)
 
 
@@ -41,7 +35,7 @@ description: "Blogging on ...."
 
 ![](http://hosun17.github.io/images/foo.png)
 
-![](http://hosun17.github.io/images/foo.png)
+![](http://hosun17.github.io/images/2.bmp)
 
 바이너리 클래시피케이션을 기준으로 한 수도 코드
 -. 앙상블 사이즈를 몇 개로 할 것인가는 하이퍼 파라메터로 사용자가 결정한다
