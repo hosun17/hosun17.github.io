@@ -75,29 +75,23 @@ i번째 instance가 t+1 시점에서 학습용 데이터에 선택될 확률은 
 # 2. GBM (Gradient boosting machine)
 ### Motivation
 
-### 추가 회귀 모형으로 잔차를 예측하려고 한다면 어떻게 될까?
-현재의 모델이 residual 만큼 잘못 맞주고 있으니, 그 다음 예측 모델을 만들어서 잔차 만큼만 예측하도록 학습 시키자. 각 모형을 결과물을 결합하면 정확하게 정답을 맞출 수 있을 것이다.
+### 추가의 회귀 모형으로 잔차를 예측하려고 한다면 어떻게 될까?
 
 ![](http://hosun17.github.io/images/4.bmp)
 
-GBM에서는 Instance는 그대로 두고 지속적으로 앞선 모델의 잔차를 y 값 즉, 객체들이 추정해야 하는 정답들을 바꾸어 다음 모델을 학습시킨며, 잔차에 대해 한번 만에 완벽하게 맞추지는 못하므로 앞선 모델이 맞추지 못한 만큼을 계속적으로 다음 모델이 학습시키도록 설계한다.
+현재의 모델이 residual 만큼 잘못 맞주고 있으니, 그 다음 예측 모델을 만들어서 잔차 만큼만 예측하도록 학습 시키자. 각 모형을 결과물을 결합하면 정확하게 정답을 맞출 수 있을 것이다.
 
 ![](http://hosun17.github.io/images/14.PNG)
 
+GBM에서는 Instance는 그대로 두고 지속적으로 앞선 모델의 잔차를 y 값 즉, 객체들이 추정해야 하는 정답들을 바꾸어 다음 모델을 학습시킨며, 잔차에 대해 한번 만에 완벽하게 맞추지는 못하므로 앞선 모델이 맞추지 못한 만큼을 계속적으로 다음 모델이 학습시키도록 설계한다.
+
 어떻게 이러한 아이디어가 Gradient와 관련이 있을까?
-Squared loss function을 f(x)에 대해 미분하게 되면
 
-![](http://hosun17.github.io/images/foo.png)
+![](http://hosun17.github.io/images/15.PNG)
 
-Gradient는 아래와 같이 계산되고,
+Squared loss function을 f(x)에 대해 미분하게 되면 Gradient는 아래와 같이 계산되고, Gradient Descent Algorithm과 마찬가지로 잔차(실제 값에서 함수의 추정 값을 뺀)는 Gradient의 반대 방향으로 움직여야 한다.
 
-![](http://hosun17.github.io/images/foo.png)
 
-Gradient Descent Algorithm과 마찬가지로 잔차(실제 값에서 함수의 추정 값을 뺀)는 Gradient의 반대 방향으로 움직여야 한다.
-
-![](http://hosun17.github.io/images/foo.png)
-
-![](http://hosun17.github.io/images/foo.png)
 
 Tree1 : Regression을 tree로 한다는 것은 Split point를 기준으로 해당하는 영역의 y값의 평균을 추정하는 것이다. 계단형의 함수가 나온다. 
 Tree2 : y값은 실제 값과 앞선 Tree에 의해서 추정된 값과의 차이에 의해서 결정됨. 여전히 잔차가 남아있으므로 그 잔차들을 기준으로 Tree를 추정한다… 이것을 계속적으로 반복하여 추정한다. 언젠가는 맞추겠지…
