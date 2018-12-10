@@ -20,18 +20,22 @@ description: "Adaboost, GBM"
 stump tree를 사용한다고 가정하면
 초기에는 개별 데이터 포인트가 선택될 확률이 항상 1/N로 uniform 하다. 하지만 모델의 결과에 따라 다음 단계에서는 각 데이터 포인트가 선택될 확률이 아래와 같이 다르게 조정된다. (현재 모델에 의해서 정분류된 데이터는 선택될 확률이 감소, 오분류된 데이터 포인트는 선택될 확률이 증가)
 
+(https://www.cse.buffalo.edu/~jcorso/t/CSE455/files/lecture_boosting.pdf)
 ![](http://hosun17.github.io/images/8.PNG)
 
 이러한 가중치 조정을 통해서 샘플링된 데이터를 가지고 두번째 stump tree를 만들고, 모델에 의한 결과(정분류 또는 오분류에)에 따라 각 데이터 포인트의 가중치가 재조정한다.
 
+(https://www.cse.buffalo.edu/~jcorso/t/CSE455/files/lecture_boosting.pdf)
 ![](http://hosun17.github.io/images/9.PNG)
 
 모델에 의한 결과에 따라 데이터 포인트의 가중치를 재조정하고 학습하는 작업을 충분히 반복한다.
 
+(https://www.cse.buffalo.edu/~jcorso/t/CSE455/files/lecture_boosting.pdf)
 ![](http://hosun17.github.io/images/10.PNG)
 
 위와 같이 충분히 반복된 계산을 통해 구해진 α들을 통해서 영역들을 적당히 결합하게 되면, 단일 모형은 단순한 stump tree일지라도, 최종적인 분류 경계면은 아래와 같이 복잡한 모형을 만들 수 있게된다.
 
+(https://www.cse.buffalo.edu/~jcorso/t/CSE455/files/lecture_boosting.pdf)
 ![](http://hosun17.github.io/images/11.PNG)
 
 ### Pseudocode of AdaBoost
