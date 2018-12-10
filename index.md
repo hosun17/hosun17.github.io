@@ -6,8 +6,8 @@ description: "Adaboost, GBM"
 ---
 
 # 1. adaboost
-## main idea
-## random 예측보다 약간 나은 성능을 보이는 weak model은 임의의 정확한 strong model로 향상 될 수 있다.
+### main idea
+### random 예측보다 약간 나은 성능을 보이는 weak model은 임의의 정확한 strong model로 향상 될 수 있다.
 
 첫 번째 모델이 먼저 문제를 풀고 앞서 해결하지 못한 어려운 케이스에 대해 다음 단계에서 집중적으로 풀어나가는 방식이다.
 
@@ -35,7 +35,7 @@ stump tree를 사용한다고 가정하면
 ![](http://hosun17.github.io/images/11.PNG)
 
 
-## Pseudocode of AdaBoost 설명
+### Pseudocode of AdaBoost 설명
 
 ![](http://hosun17.github.io/images/2.bmp)
 
@@ -83,13 +83,13 @@ i번째 instance가 t+1 시점에서 학습용 데이터에 선택될 확률은 
 
 ![](http://hosun17.github.io/images/14.PNG)
 
-GBM에서는 Instance는 그대로 두고 지속적으로 앞선 모델의 잔차를 y 값 즉, 객체들이 추정해야 하는 정답들을 바꾸어 다음 모델을 학습시킨며, 잔차에 대해 한번 만에 완벽하게 맞추지는 못하므로 앞선 모델이 맞추지 못한 만큼을 계속적으로 다음 모델이 학습시키도록 설계한다.
+GBM에서는 Instance는 그대로 두고 지속적으로 앞선 모델의 잔차를 y 값 즉, 객체들이 추정해야 하는 정답들을 바꾸어 다음 모델을 학습시킨다. 잔차에 대해 한번 만에 완벽하게 맞추지는 못하므로 앞선 모델이 맞추지 못한 만큼을 계속적으로 다음 모델이 학습시키도록 설계한다.
 
 어떻게 이러한 아이디어가 Gradient와 관련이 있을까?
 
 ![](http://hosun17.github.io/images/15.PNG)
 
-Squared loss function을 f(x)에 대해 미분하게 되면 Gradient는 아래와 같이 계산되고, Gradient Descent Algorithm과 마찬가지로 잔차(실제 값에서 함수의 추정 값을 뺀)는 Gradient의 반대 방향으로 움직여야 한다.
+Squared loss function을 f(x)에 대해 미분하게 되면 Gradient는 아래와 같이 계산되고, Gradient Descent Algorithm과 마찬가지로 잔차(실제 값에서 함수의 추정 값을 뺀)는 loss function의 negative gradient로 표현되며, loss function의 최소값을 찾기 위해서는 Gradient의 반대 방향으로 이동하여야 한다.
 
 
 
