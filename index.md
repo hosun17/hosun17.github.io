@@ -1,4 +1,3 @@
-
 # Business Analytics : Adaboost, GBM
 ---
 이 post는 고려대학교 산업경영공학과 DSBA연구실 강필성 교수님의 Business-Analytics강의를 바탕으로 작성되었습니다
