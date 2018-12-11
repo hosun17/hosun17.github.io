@@ -241,6 +241,7 @@ GBM의 가장 큰 장점 중 하나는 통계적인 유의성은 아니지만 �
 
 아래는 GBM을 통한 학습한 결과와 추출된 변수의 중요도이다.
 
+(https://scikit-learn.org/stable/auto_examples/ensemble/plot_gradient_boosting_regression.html)
 ![](http://hosun17.github.io/images/25.PNG)
 
 ```
